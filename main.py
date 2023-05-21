@@ -1,22 +1,24 @@
 # Import pygame library
 import pygame, random
 
+WIDTH = 800
+HEIGHT = 600
+
 # Initialize pygame
 pygame.init()
 
-# Create a screen with width 800 and height 600
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # Set the title and icon of the window
 pygame.display.set_caption("Point and Click Game")
-icon = pygame.image.load("icon.jpg")
-pygame.display.set_icon(icon)
+# icon = pygame.image.load("icon.jpg")
+# pygame.display.set_icon(icon)
 
 # Load the background image
 background = pygame.image.load("background.png")
 
 # Load the target image
-target = pygame.image.load("target.png")
+target = pygame.image.load("karbownik1.png")
 
 # Define the target position
 target_x = 400
@@ -50,6 +52,9 @@ while running:
     screen.blit(background, (0, 0))
 
     # Draw the target on the screen
+    photo_number = random.randint(1,4)
+    target = pygame.image.load("karbownik"+str(photo_number)+".png")
+    
     draw_target(target_x, target_y)
 
     # Show the score on the screen
@@ -78,10 +83,10 @@ while running:
                 score += 1
 
                 # Move the target to a random position on the screen
-                target_x = random.randint(0, 800 - target.get_width())
-                target_y = random.randint(0, 600 - target.get_height())
+                target_x = random.randint(0, WIDTH - target.get_width())
+                target_y = random.randint(0, HEIGHT - target.get_height())
 
                 # Draw another target on a random position on the screen
-                new_target_x = random.randint(0, 800 - target.get_width())
-                new_target_y = random.randint(0, 600 - target.get_height())
+                new_target_x = random.randint(0, WIDTH - target.get_width())
+                new_target_y = random.randint(0, HEIGHT - target.get_height())
                 draw_target(new_target_x, new_target_y)
