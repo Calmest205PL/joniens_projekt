@@ -10,9 +10,9 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # Set the title and icon of the window
-pygame.display.set_caption("Point and Click Game")
-# icon = pygame.image.load("icon.jpg")
-# pygame.display.set_icon(icon)
+pygame.display.set_caption("Catch the Karbownik")
+icon = pygame.image.load("icon.jpeg")
+pygame.display.set_icon(icon)
 
 # Load the background image
 background = pygame.image.load("background.png")
@@ -36,7 +36,7 @@ font = pygame.font.SysFont("arial", 32)
 
 # Define a function to show the score on the screen
 def show_score():
-    score_text = font.render("Score: " + str(score), True, (255, 255, 255))
+    score_text = font.render("Punkty: " + str(score), True, (255, 255, 255))
     screen.blit(score_text, (10, 10))
 
 # Define a variable to store the game loop condition
@@ -53,7 +53,6 @@ while running:
 
     # Draw the target on the screen
     photo_number = random.randint(1,4)
-    target = pygame.image.load("karbownik"+str(photo_number)+".png")
     
     draw_target(target_x, target_y)
 
@@ -89,4 +88,5 @@ while running:
                 # Draw another target on a random position on the screen
                 new_target_x = random.randint(0, WIDTH - target.get_width())
                 new_target_y = random.randint(0, HEIGHT - target.get_height())
+                target = pygame.image.load("karbownik"+str(photo_number)+".png")
                 draw_target(new_target_x, new_target_y)
